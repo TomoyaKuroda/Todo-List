@@ -1,33 +1,253 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+html {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
+  color: #202020;
+  background-color: #fafafa;
+  font-smooth: always;
+  -webkit-font-smooth: antialised;
+  -moz-osx-font-smooth: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.darkmode header {
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+  background-color: #282828;
+  border-color: transparent;
+}
+
+header {
+  border-bottom: solid 1px #8ac3c7;
+  background-color: #2c7c94;
+  transition: height 200ms ease-in;
+  box-shadow: 0 1px 2 px rgba(0, 0, 0, 0.15);
+  height: 44px;
+  z-index: 400;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  header {
+    padding: 0 10px;
+  }
+}
+
+header nav {
+  display: grid;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  max-width: 922px;
+  margin: auto;
+  height: 44px;
+}
+
+header nav p,
+header nav li {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header nav div.logo {
+  padding-left: 8px;
+  grid-area: 1/1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+header nav div.logo img {
+  width: 24px;
+}
+
+header nav div.settings {
+  grid-area: 1/2;
+  text-align: right;
+}
+
+header nav div ul {
+  float: right;
+}
+
+header nav div ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  float: left;
+}
+
+header nav div ul li:hover {
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+header nav div ul li.settings__add {
+  margin-right: 15px;
+  font-size: 30px;
+}
+
+header nav div ul li.settings__dark-mode svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 266px;
+  height: calc(100vh);
+  padding-top: 74px;
+  position: fixed;
+  overflow: hidden;
+  overflow-y: hidden;
+  border-right: 1px solid #f1f1f1;
+  background-color: #fafafa;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+.sidebar li {
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.sidebar li:hover .sidebar__project-delete {
+  display: block;
+}
+
+.sidebar__project {
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.sidebar__project-delete {
+  margin-left: auto;
+  display: none;
+}
+
+.sidebar__project-delete svg {
+  color: #cacaca;
+}
+
+.sidebar__project.active, .sidebar__project:hover {
+  font-weight: bold;
+  background-color: white;
+}
+
+.sidebar__project:nth-child(1) .sidebar__dot {
+  color: #6accbc;
+}
+
+.sidebar__project:nth-child(2) .sidebar__dot {
+  color: #fad003;
+}
+
+.sidebar__project:nth-child(3) .sidebar__dot {
+  color: #ff8d85;
+}
+
+.sidebar__project:nth-child(4) .sidebar__dot {
+  color: #ff9932;
+}
+
+.sidebar__project:nth-child(5) .sidebar__dot {
+  color: #af38eb;
+}
+
+.sidebar__projects {
+  padding-left: 3px;
+}
+
+.sidebar__project {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.sidebar__dot {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.sidebar__middle {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  border-bottom: 1px solid #f1f1f1;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.sidebar__middle span {
+  color: #00008a;
+  margin-right: 10px;
+}
+
+.sidebar__middle span svg.hidden-projects {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.sidebar__middle h2 {
+  margin: 0;
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.sidebar__generic li {
+  padding: 10px 0 10px 10px;
+  list-style-type: none;
+  color: #333;
+  display: flex;
+  cursor: pointer;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.sidebar__generic li span:first-of-type {
+  margin-right: 10px;
+}
+
+.sidebar__generic li span:first-of-type svg {
+  width: 18px;
+  height: 18px;
+  color: #555;
+}
+
+.sidebar__generic li.active, .sidebar__generic li:hover {
+  font-weight: bold;
+  background-color: white;
 }
